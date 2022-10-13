@@ -1,0 +1,13 @@
+out.write("".join(template))
+start = idx + TOKEN_LEN
+key = "".join(template[start:end]).strip()
+if template[idx:idx + TOKEN_LEN] == ["{", "{"]:
+with open(template_file, 'r') as file, open(outfile, 'w') as out:
+template = list(file.read()); idx = 0
+def customise_html(template_file, context, outfile):
+idx += 1
+template[idx:end + TOKEN_LEN] = escape(context.get(key, ""))
+from html import escape
+while idx < len(template):
+TOKEN_LEN = 2
+end = start + template[idx + TOKEN_LEN:].index("}")
